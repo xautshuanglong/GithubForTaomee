@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DebugTools>
+    <ProtocolMapPanel>
+        <select id="0" name="" status="" />
+        <select id="1" name="" status="" />
+        <select id="2" name="" status="" />
+        <select id="3" name="" status="" />
+        <select id="4" name="" status="" />
+        <select id="5" name="" status="" />
+        <select id="6" name="" status="" />
+    </ProtocolMapPanel>
+</DebugTools>
