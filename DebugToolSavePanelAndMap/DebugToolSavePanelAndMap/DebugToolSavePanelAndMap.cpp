@@ -71,19 +71,6 @@ int main(int argc, char* argv[])
 
 	} while (requestParam.length() > 0 && spanIndex != string::npos);
 
-	pLog->debug("=============== Before Sort ===============");
-	//int testIndex = 0;
-	//stringstream ss;
-	//list<string>::iterator it=strParmList.begin();
-	//while (it != strParmList.end())
-	//{
-	//	ss.clear();
-	//	ss.str("");
-	//	ss << testIndex;
-	//	pLog->debug(ss.str() + string(" == ") + *it);
-	//	testIndex++;
-	//	it++;
-	//}
 	strParmList.sort(compareFunc);
 
 	// ¥¶¿Ì±‡∫≈
