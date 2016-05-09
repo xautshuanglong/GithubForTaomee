@@ -18,10 +18,13 @@ void WritePanelNameConfig(string userID, const list<string> requestStr);
 void addPanelNameData(TiXmlDocument xmlDoc, const list<string> requestStr, TiXmlElement *pElement);
 void addPanelUserData(TiXmlDocument xmlDoc, string userID, const list<string> requestStr, TiXmlElement *pRoot);
 
+BOOL compareFunc(const string& first,const string& second);// strParmList.sort()，数值比较
+
 int main(int argc, char* argv[])
 {
 	cout << "Content-type:text/html\r\n\r\n";
 	pLog = LogTool::getInstance();// 日志工具
+	pLog->pushNDC("main");
 	
 	// 客户端参数测试
 	string requestMethod;
@@ -68,7 +71,20 @@ int main(int argc, char* argv[])
 
 	} while (requestParam.length() > 0 && spanIndex != string::npos);
 
-	strParmList.sort();
+	pLog->debug("=============== Before Sort ===============");
+	//int testIndex = 0;
+	//stringstream ss;
+	//list<string>::iterator it=strParmList.begin();
+	//while (it != strParmList.end())
+	//{
+	//	ss.clear();
+	//	ss.str("");
+	//	ss << testIndex;
+	//	pLog->debug(ss.str() + string(" == ") + *it);
+	//	testIndex++;
+	//	it++;
+	//}
+	strParmList.sort(compareFunc);
 
 	// 处理编号
 	string tempHandlerStr = strParmList.front();
@@ -118,8 +134,27 @@ int main(int argc, char* argv[])
 		//cout << string("p0=") + userID << endl;
 		pLog->info("============  End Switching  ============");
 	}
+	pLog->popNDC();
 
 	return 0;
+}
+
+BOOL compareFunc(const string& first, const string& second)
+{
+	int index = 0;
+	int iFirst = 0, iSecond = 0;
+
+	index = first.find_first_of("=");
+	iFirst = atoi(first.substr(1, index).c_str());
+	index = second.find_first_of("=");
+	iSecond = atoi(second.substr(1, index).c_str());
+
+	if (iFirst <= iSecond)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
 }
 
 void ReadPanelNameConfig(string userID)

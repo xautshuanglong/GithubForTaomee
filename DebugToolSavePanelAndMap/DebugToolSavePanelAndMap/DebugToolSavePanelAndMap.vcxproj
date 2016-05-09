@@ -90,6 +90,9 @@
     <ClCompile Include="DebugToolSavePanelAndMap.cpp" />
     <ClCompile Include="LogTool.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\config\log4cpp.ini" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

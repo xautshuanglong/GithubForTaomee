@@ -27,4 +27,7 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\config\log4cpp.ini" />
+  </ItemGroup>
 </Project>
